@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Glass Identification</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background-image: url(https://seele.com//fileadmin/user_upload/images/02_Strukturen_Uebersicht/Ganz-Glas-Konstruktionen/ApplePark_c_seele.jpg);">
+ <div class="login">
+	<h1>Glass Identification</h1>
+	<p>For Test: RI: 14.92, Na: 14.92, Al: 1.99, Si: 73.06, K: 0, Ca: 8.40, Ba: 1.59, Fe: 0</p>
+	{% if prediction_text != null %}
+    <div class="output">{{ prediction_text }}</div>
+  {% endif %}
+
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="ri" placeholder="RI: Refractive Index" required="required"/>
+    	<input type="text" name="na" placeholder="Na: Sodium" required="required"/>
+    	<input type="text" name="mg" placeholder="Mg: Magnesium" required="required"/>    
+    	<input type="text" name="al" placeholder="Al: Aluminum" required="required"/>       
+        <input type="text" name="si" placeholder="Si: Silicon" required="required"/>
+		<input type="text" name="k"  placeholder="K: Potassium" required="required"/>	
+		<input type="text" name="ca" placeholder="Ca: Calcium" required="required"/>	
+		<input type="text" name="ba" placeholder="Ba: Barium" required="required"/>	
+		<input type="text" name="fe" placeholder="Fe: Iron" required="required"/>
+        <button type="submit" class="btn btn-primary">Identify</button>
+        <a href="/" class="btn btn-primary">Refresh</a>
+    </form>
+ </div>
+
+
+</body>
+</html>
